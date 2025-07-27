@@ -5,23 +5,32 @@
   <title>Enter Your Contact Info</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover;
     }
 
     @media (max-width: 768px) {
-      body {
-        background-image: url('background-mobile.jpg');
+      .bg-image {
+        content: url('background-mobile.jpg');
       }
     }
 
@@ -35,16 +44,15 @@
       text-align: center;
       max-width: 500px;
       width: 90%;
-      box-sizing: border-box;
+      margin: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    .form-box img.logo {
-      width: 100px;
-      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .form-group {
@@ -151,7 +159,8 @@
   </style>
 </head>
 <body>
-  <!-- Contact Form -->
+  <img class="bg-image" src="background.jpg" alt="Background Image" />
+
   <div class="form-box" id="formBox">
     <h2>Enter Your Contact Info</h2>
     <form id="contactForm" novalidate>
